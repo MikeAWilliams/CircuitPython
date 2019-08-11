@@ -3,6 +3,9 @@ These files all make use of adafruit's character lcd library. It is part of the 
 
 The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/product-files/399/399+spec+sheet.pdf
 
+I also followed this guide https://www.rototron.info/circuitpython-nrf52840-lcd-displays-tutorial/
+
+
 | lcd pin       | use           | controler pin|
 | ------------- |:-------------:| ------------:|
 | 1             | vss           | gnd          |
