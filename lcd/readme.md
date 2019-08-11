@@ -5,12 +5,12 @@ The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/pr
 
 | lcd pin       | use           | controler pin|
 | ------------- |:-------------:| ------------:|
-| 1             | a             | b            |
-| 2             | a             | b            |
-| 3             | a             | b            |
-| 4             | a             | b            |
-| 5             | a             | b            |
-| 6             | a             | b            |
+| 1             | vss           | b            |
+| 2             | vdd           | b            |
+| 3             | v0            | b            |
+| 4             | rs            | 13           |
+| 5             | r/w           | gnd          |
+| 6             | enable        | 12           |
 | 7             | db0           | blank        |
 | 8             | db1           | blank        |
 | 9             | db2           | blank        |
