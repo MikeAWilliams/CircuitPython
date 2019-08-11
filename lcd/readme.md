@@ -24,8 +24,8 @@ The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/pr
 | 17            | green cathode | 5            |
 | 18            | blue cathode  | 5            |
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+| pot pin       | hookup        |
+| ------------- |:-------------:|
+| left          | usb           |
+| middle, wiper | lcd 3, v0     |
+| right         | gnd           |
