@@ -4,8 +4,8 @@ These files all make use of adafruit's character lcd library. It is part of the 
 The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/product-files/399/399+spec+sheet.pdf
 
 Pinout
-|Lcd|destination|
-|---|:-----------:|
+|Lcd|use |destination|
+|---|:---|----------:|
 |1||
 |2||
 |3||
@@ -21,6 +21,6 @@ Pinout
 |13||
 |14||
 |15||
-|16||
-|17||
-|18||
+|16|red cathode|5|
+|17|green cathode|5|
+|18|blue cathode|5|
