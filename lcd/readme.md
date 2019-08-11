@@ -5,9 +5,9 @@ The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/pr
 
 | lcd pin       | use           | controler pin|
 | ------------- |:-------------:| ------------:|
-| 1             | vss           | b            |
-| 2             | vdd           | b            |
-| 3             | v0            | b            |
+| 1             | vss           | gnd          |
+| 2             | vdd           | usb          |
+| 3             | v0            | pot wipeer   |
 | 4             | rs            | 13           |
 | 5             | r/w           | gnd          |
 | 6             | enable        | 12           |
