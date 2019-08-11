@@ -5,7 +5,7 @@ The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/pr
 
 Pinout
 |Lcd|destination|
-|---|-----------|
+|---|:-----------:|
 |1||
 |2||
 |3||
