@@ -11,14 +11,14 @@ The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/pr
 | 4             | a             | b            |
 | 5             | a             | b            |
 | 6             | a             | b            |
-| 7             | a             | b            |
-| 8             | a             | b            |
-| 9             | a             | b            |
-| 10            | a             | b            |
-| 11            | a             | b            |
-| 12            | a             | b            |
-| 13            | a             | b            |
-| 14            | a             | b            |
+| 7             | db0           | b            |
+| 8             | db1           | b            |
+| 9             | db2           | b            |
+| 10            | db3           | b            |
+| 11            | db4           | b            |
+| 12            | db5           | b            |
+| 13            | db6           | b            |
+| 14            | db7           | b            |
 | 15            | common annode | usb          |
 | 16            | red cathode   | 5            |
 | 17            | green cathode | 5            |
