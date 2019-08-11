@@ -19,7 +19,7 @@ The lcd I am using has the following spec sheet https://cdn-shop.adafruit.com/pr
 | 12            | a             | b            |
 | 13            | a             | b            |
 | 14            | a             | b            |
-| 15            | a             | b            |
+| 15            | common annode | usb          |
 | 16            | red cathode   | 5            |
 | 17            | green cathode | 5            |
 | 18            | blue cathode  | 5            |
