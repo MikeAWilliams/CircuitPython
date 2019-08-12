@@ -11,3 +11,27 @@ sets up a clock where the time can be changed by an hour button and a minute but
 | scl       | feather scl |
 | sqw       | blank       |
 
+| second button | destination |
+|--------------:|------------:|
+| top left      | feather D5  |
+| top right     | blank       |
+| bootom left   | blank       |
+| bottom right  | gnd         |
+
+
+| hour button   | destination |
+|--------------:|------------:|
+| top left      | feather D6  |
+| top right     | blank       |
+| bootom left   | blank       |
+| bottom right  | gnd         |
+
+
+| feather pin   | destination |
+|--------------:|------------:|
+| 3v            | 3v bus      |
+| gnd           | gnd bus     |
+| d6            | hour tl     |
+| d5            | minute tl   |
+| scl           | clock scl   |
+| sda           | clock sda   !
