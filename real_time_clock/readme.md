@@ -1,3 +1,8 @@
 example using a real time clock. Adafruit PCF8523 Real Time Clock Assembled Breakout Board
+Requires adafruit circuitpython bundle libraries adafruit_bus_device, adafruit_register,adafruit_pcf8523.mpy
 
-followed the exmaple found https://learn.adafruit.com/adafruit-pcf8523-real-time-clock/rtc-with-circuitpython
+sets up a clock where the time can be changed by an hour button and a minute button.
+
+| clock pin | destination |
+|----------:|------------:|
+| a         | b           |
