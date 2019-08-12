@@ -5,4 +5,9 @@ sets up a clock where the time can be changed by an hour button and a minute but
 
 | clock pin | destination |
 |----------:|------------:|
-| a         | b           |
+| gnd       | ground      |
+| vcc       | 3 volts     |
+| sda       | feather sda |
+| scl       | feather scl |
+| sqw       | blank       |
+
