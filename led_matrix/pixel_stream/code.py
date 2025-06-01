@@ -19,8 +19,6 @@ def make_big_palette(size):
     for r in range (0, 255, color_step):
         for g in range (0, 255, color_step):
             for b in range (0, 255, color_step):
-                if r == 0 and g == 0 and b == 0:
-                    continue
                 if index < size:
                     palette[index] = (r << 16) | (g << 8) | b
                     index += 1
@@ -36,15 +34,49 @@ def draw_full_palette(bitmap, size):
             if color_index >= size:
                 color_index = 0
 
-def update_display():
+def clear_full_screen(bitmap):
+    for j in range(MATRIX_HEIGHT):
+        for i in range(MATRIX_WIDTH):
+            bitmap[i,j] = 0  # Assuming 0 is the index for black or empty color
+
+class Mover:
+    def __init__(self, x, y, vx, vy, color_index):
+        self.x = x
+        self.y = y
+        self.vx = vx
+        self.vy = vy
+        self.color_index = color_index
+        self.should_die = False
+    def move(self):
+        self.x += self.vx
+        self.y += self.vy
+        # Check horizontal bounds
+        if self.x < 0 or self.x >= MATRIX_WIDTH or self.y < 0 or self.y >= MATRIX_HEIGHT:
+            self.should_die = True
+
+def draw_mover(bitmap, mover):
+    if not mover.should_die:
+        bitmap[int(mover.x), int(mover.y)] = 0
+    mover.move()
+    if not mover.should_die:
+        bitmap[int(mover.x), int(mover.y)] = mover.color_index 
+
+def update_display(display, bitmap, spawn_points, streamers):
     display.auto_refresh = False
-    for i in range(MATRIX_WIDTH):
-        for j in range(MATRIX_HEIGHT):
-            color_index = random.randint(0, len(palette) - 1)
-            bitmap[i, j] = color_index
+    for spawner in spawn_points:
+        streamers.append(create_random_mover(spawner[0], spawner[1]))
+    for streamer in streamers:
+        draw_mover(bitmap, streamer)
+        if streamer.should_die:
+            streamers.remove(streamer)
     display.auto_refresh = True
 
-
+def create_random_mover(i, j):
+    rand_vx = random.randint(-2, 2)
+    rand_vy = random.randint(-2, 2)
+    if rand_vx == 0 and rand_vy == 0:
+        rand_vx = 1  # Ensure at least one movement direction is non-zero
+    return Mover(i, j, rand_vx, rand_vy, random.randint(0, PALETTE_SIZE - 1))
 
 palette = make_big_palette(PALETTE_SIZE)
 print("Palette size:", len(palette))
@@ -62,7 +94,16 @@ group.append(tile_grid)
 # draw the full palette just once
 draw_full_palette(bitmap, len(palette))
 time.sleep(5)
+clear_full_screen(bitmap)
+
+# just one mover for now
+print("Creating random mover")
+spawn_points = []
+spawn_points.append((MATRIX_WIDTH//2,MATRIX_HEIGHT//2))  
+spawn_points.append((MATRIX_WIDTH//4,MATRIX_HEIGHT//2))  
+streamers = []
+print("spawn points ", spawn_points)
 
 while True:
-    update_display()
+    update_display(display, bitmap, spawn_points, streamers)
     time.sleep(DELAY)
