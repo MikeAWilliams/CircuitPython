@@ -97,10 +97,10 @@ time.sleep(5)
 clear_full_screen(bitmap)
 
 # just one mover for now
-print("Creating random mover")
 spawn_points = []
-spawn_points.append((MATRIX_WIDTH//2,MATRIX_HEIGHT//2))  
-spawn_points.append((MATRIX_WIDTH//4,MATRIX_HEIGHT//2))  
+spawn_points.append((MATRIX_WIDTH // 2, MATRIX_HEIGHT // 2)) 
+spawn_points.append((MATRIX_WIDTH // 4, MATRIX_HEIGHT // 2)) 
+spawn_points.append((MATRIX_WIDTH - MATRIX_WIDTH // 4, MATRIX_HEIGHT // 2)) 
 streamers = []
 print("spawn points ", spawn_points)
 
