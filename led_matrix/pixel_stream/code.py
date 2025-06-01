@@ -3,6 +3,8 @@ import math
 import displayio
 import random
 from adafruit_matrixportal.matrix import Matrix
+from adafruit_display_text import label
+import terminalio
 
 MATRIX_WIDTH = 64
 MATRIX_HEIGHT = 32
@@ -54,25 +56,24 @@ class Mover:
         if self.x < 0 or self.x >= MATRIX_WIDTH or self.y < 0 or self.y >= MATRIX_HEIGHT:
             self.should_die = True
 
-def draw_mover(bitmap, mover):
+def update_mover(bitmap, mover):
     if not mover.should_die:
         bitmap[int(mover.x), int(mover.y)] = 0
-    mover.move()
+        mover.move()
     if not mover.should_die:
         bitmap[int(mover.x), int(mover.y)] = mover.color_index 
 
-def update_display(display, bitmap, spawn_points, streamers):
+def update_display(display, bitmap, spawn_point, streamers):
     display.auto_refresh = False
-    for spawner in spawn_points:
-        streamers.append(create_random_mover(spawner[0], spawner[1]))
+    streamers.append(create_random_mover(spawn_point[0], spawn_point[1]))
     for streamer in streamers:
-        draw_mover(bitmap, streamer)
+        update_mover(bitmap, streamer)
         if streamer.should_die:
             streamers.remove(streamer)
     display.auto_refresh = True
 
 def create_random_mover(i, j):
-    rand_vx = random.uniform(-2, 2)
+    rand_vx = random.uniform(-3, 3)
     rand_vy = random.uniform(-2, 2)
     if rand_vx == 0 and rand_vy == 0:
         rand_vx = 1  # Ensure at least one movement direction is non-zero
@@ -91,19 +92,17 @@ bitmap = displayio.Bitmap(display.width, display.height, len(palette))
 tile_grid = displayio.TileGrid(bitmap, pixel_shader=palette)
 group.append(tile_grid)
 
-# draw the full palette just once
-draw_full_palette(bitmap, len(palette))
+text = "Mike&Sig"
+text_area = label.Label(terminalio.FONT, text=text, color=0xFFFFFF, x=10, y=15)
+group.append(text_area)
 time.sleep(5)
+group.remove(text_area)
 clear_full_screen(bitmap)
 
 # just one mover for now
-spawn_points = []
-spawn_points.append((MATRIX_WIDTH // 2, MATRIX_HEIGHT // 2)) 
-spawn_points.append((MATRIX_WIDTH // 4, MATRIX_HEIGHT // 2)) 
-spawn_points.append((MATRIX_WIDTH - MATRIX_WIDTH // 4, MATRIX_HEIGHT // 2)) 
+spawn_point = (MATRIX_WIDTH // 2, MATRIX_HEIGHT // 2)
 streamers = []
-print("spawn points ", spawn_points)
 
 while True:
-    update_display(display, bitmap, spawn_points, streamers)
+    update_display(display, bitmap, spawn_point, streamers)
     time.sleep(DELAY)
