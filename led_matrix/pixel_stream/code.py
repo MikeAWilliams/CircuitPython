@@ -10,6 +10,7 @@ MATRIX_WIDTH = 64
 MATRIX_HEIGHT = 32
 DELAY = 0.02
 PALETTE_SIZE = 100
+MOVER_SPEED = 0.75  
 
 def make_big_palette(size):
     print("Creating palette with size:", size)
@@ -77,6 +78,10 @@ def create_random_mover(i, j):
     rand_vy = random.uniform(-2, 2)
     if rand_vx == 0 and rand_vy == 0:
         rand_vx = 1  # Ensure at least one movement direction is non-zero
+    # set a constant speed but random direction
+    mag = math.sqrt(rand_vx**2 + rand_vy**2)
+    rand_vx = rand_vx / mag * MOVER_SPEED
+    rand_vy = rand_vy / mag * MOVER_SPEED
     return Mover(i, j, rand_vx, rand_vy, random.randint(0, PALETTE_SIZE - 1))
 
 palette = make_big_palette(PALETTE_SIZE)
