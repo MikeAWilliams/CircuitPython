@@ -99,7 +99,6 @@ time.sleep(5)
 group.remove(text_area)
 clear_full_screen(bitmap)
 
-# just one mover for now
 spawn_point = (MATRIX_WIDTH // 2, MATRIX_HEIGHT // 2)
 streamers = []
 
