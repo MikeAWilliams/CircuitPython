@@ -72,8 +72,8 @@ def update_display(display, bitmap, spawn_points, streamers):
     display.auto_refresh = True
 
 def create_random_mover(i, j):
-    rand_vx = random.randint(-2, 2)
-    rand_vy = random.randint(-2, 2)
+    rand_vx = random.uniform(-2, 2)
+    rand_vy = random.uniform(-2, 2)
     if rand_vx == 0 and rand_vy == 0:
         rand_vx = 1  # Ensure at least one movement direction is non-zero
     return Mover(i, j, rand_vx, rand_vy, random.randint(0, PALETTE_SIZE - 1))
